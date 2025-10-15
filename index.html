@@ -1651,7 +1651,57 @@
             username: 'erfan04s',
             repo: 'anesthesia-registrations-1404',
             filePath: 'data/registrations.json',
-            token: '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'
+            token: '// آپلود داده به GitHub
+async function updateGitHubFile(data) {
+    try {
+        const fileSHA = await getFileSHA();
+        
+        // تبدیل داده به base64
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+        
+        const response = await fetch(
+            `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${GITHUB_CONFIG.token}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                body: JSON.stringify({
+                    message: `ثبت‌نام جدید - ${new Date().toLocaleString('fa-IR')}`,
+                    content: content,
+                    sha: fileSHA
+                })
+            }
+        );
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('GitHub API Error:', errorText);
+            
+            if (response.status === 401) {
+                throw new Error('توکن GitHub نامعتبر است. لطفاً توکن جدید ایجاد کنید.');
+            } else if (response.status === 404) {
+                throw new Error('فایل یا ریپوی مورد نظر پیدا نشد.');
+            } else {
+                throw new Error(`خطای GitHub: ${response.status} - ${errorText}`);
+            }
+        }
+        
+        console.log('✅ داده با موفقیت در GitHub ذخیره شد');
+        return await response.json();
+        
+    } catch (error) {
+        console.error('❌ خطا در آپلود به GitHub:', error);
+        
+        // ذخیره در localStorage به عنوان پشتیبان
+        console.log('💾 ذخیره در localStorage به عنوان پشتیبان...');
+        saveRegistrationToLocalStorage(data);
+        
+        throw error;
+    }
+}'
         };
 
         // حالت ذخیره‌سازی
@@ -1683,41 +1733,57 @@
             }
         }
 
-        // آپلود داده به GitHub
-        async function updateGitHubFile(data) {
-            try {
-                const fileSHA = await getFileSHA();
-                
-                const response = await fetch(
-                    `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`,
-                    {
-                        method: 'PUT',
-                        headers: {
-                            'Authorization': `token ${GITHUB_CONFIG.token}`,
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/vnd.github.v3+json'
-                        },
-                        body: JSON.stringify({
-                            message: `ثبت‌نام جدید - ${new Date().toLocaleString('fa-IR')}`,
-                            content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
-                            sha: fileSHA
-                        })
-                    }
-                );
-                
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || 'خطا در آپلود');
-                }
-                
-                console.log('✅ داده با موفقیت در GitHub ذخیره شد');
-                return await response.json();
-                
-            } catch (error) {
-                console.error('❌ خطا در آپلود به GitHub:', error);
-                throw error;
+// آپلود داده به GitHub
+async function updateGitHubFile(data) {
+    try {
+        const fileSHA = await getFileSHA();
+        
+        // تبدیل داده به base64
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+        
+        const response = await fetch(
+            `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${GITHUB_CONFIG.token}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                body: JSON.stringify({
+                    message: `ثبت‌نام جدید - ${new Date().toLocaleString('fa-IR')}`,
+                    content: content,
+                    sha: fileSHA
+                })
+            }
+        );
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('GitHub API Error:', errorText);
+            
+            if (response.status === 401) {
+                throw new Error('توکن GitHub نامعتبر است. لطفاً توکن جدید ایجاد کنید.');
+            } else if (response.status === 404) {
+                throw new Error('فایل یا ریپوی مورد نظر پیدا نشد.');
+            } else {
+                throw new Error(`خطای GitHub: ${response.status} - ${errorText}`);
             }
         }
+        
+        console.log('✅ داده با موفقیت در GitHub ذخیره شد');
+        return await response.json();
+        
+    } catch (error) {
+        console.error('❌ خطا در آپلود به GitHub:', error);
+        
+        // ذخیره در localStorage به عنوان پشتیبان
+        console.log('💾 ذخیره در localStorage به عنوان پشتیبان...');
+        saveRegistrationToLocalStorage(data);
+        
+        throw error;
+    }
+}
 
         // دریافت داده‌ها از GitHub
         async function getRegistrationsFromGitHub() {
@@ -3071,3 +3137,4 @@ END:VCALENDAR`;
 </body>
 
 </html>
+
