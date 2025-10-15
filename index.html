@@ -1,0 +1,3072 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوت‌نامه دیجیتال - جشن روز جهانی هوشبری ۱۴۰۴</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff') format('woff'),
+                 url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Samim';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.4/dist/Samim-Bold.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.4/dist/Samim-Bold.woff') format('woff'),
+                 url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.4/dist/Samim-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        /* انیمیشن‌های اصلی */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(250, 204, 21, 0.8); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        @keyframes quantumOrbit {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            25% { transform: rotateX(90deg) rotateY(45deg) rotateZ(90deg); }
+            50% { transform: rotateX(180deg) rotateY(90deg) rotateZ(180deg); }
+            75% { transform: rotateX(270deg) rotateY(135deg) rotateZ(270deg); }
+            100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
+        }
+        @keyframes slideIn3D {
+            0% { 
+                transform: translateX(100%) rotateY(90deg) scale(0.8);
+                opacity: 0;
+            }
+            100% { 
+                transform: translateX(0) rotateY(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* انیمیشن‌های جدید و پیشرفته */
+        @keyframes holographicReveal {
+            0% {
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                opacity: 0;
+                transform: scale(0.8) rotateX(45deg);
+            }
+            50% {
+                clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+                opacity: 0.7;
+                transform: scale(1.05) rotateX(15deg);
+            }
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                opacity: 1;
+                transform: scale(1) rotateX(0deg);
+            }
+        }
+
+        @keyframes particleStorm {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+        }
+
+        @keyframes cosmicRays {
+            0% { transform: translateX(-100%) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes nebulaPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* انیمیشن‌های جدید باز شدن نامه - پیشرفته‌تر */
+        @keyframes envelope3DOpen {
+            0% {
+                transform: scale(1) rotateX(0) rotateY(0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(1.1) rotateX(-10deg) rotateY(10deg) translateY(-30px);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 80px rgba(250, 204, 21, 0.9)) brightness(1.3);
+            }
+            40% {
+                transform: scale(1.2) rotateX(-25deg) rotateY(20deg) translateY(-60px);
+                opacity: 0.8;
+                filter: drop-shadow(0 0 100px rgba(250, 204, 21, 1)) brightness(1.5);
+            }
+            60% {
+                transform: scale(1.3) rotateX(-40deg) rotateY(30deg) translateY(-90px);
+                opacity: 0.6;
+                filter: drop-shadow(0 0 120px rgba(250, 204, 21, 0.8)) brightness(1.7);
+            }
+            80% {
+                transform: scale(1.1) rotateX(-50deg) rotateY(40deg) translateY(-120px);
+                opacity: 0.4;
+                filter: drop-shadow(0 0 150px rgba(250, 204, 21, 0.6)) brightness(1.9);
+            }
+            100% {
+                transform: scale(0) rotateX(-60deg) rotateY(50deg) translateY(-200px);
+                opacity: 0;
+                filter: drop-shadow(0 0 200px rgba(250, 204, 21, 0.3)) brightness(2);
+            }
+        }
+
+        @keyframes content3DReveal {
+            0% {
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                opacity: 0;
+                transform: scale(0.5) rotateX(90deg) translateZ(100px);
+            }
+            50% {
+                clip-path: polygon(0 0, 100% 0, 100% 60%, 0 60%);
+                opacity: 0.8;
+                transform: scale(1.1) rotateX(20deg) translateZ(50px);
+            }
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                opacity: 1;
+                transform: scale(1) rotateX(0deg) translateZ(0);
+            }
+        }
+
+        @keyframes cosmicLightBeam {
+            0% {
+                transform: translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* انیمیشن جدید: انفجار ذرات پیشرفته‌تر */
+        @keyframes particleExplosion {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* انیمیشن جدید: موج انرژی */
+        @keyframes energyWave {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* استایل‌های پایه */
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: white;
+            transition: all 0.5s ease;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Samim', sans-serif;
+        }
+
+        .fade-in { animation: fadeIn 1.5s ease-out; }
+        .pulse { animation: pulse 2s infinite; }
+        .float { animation: float 6s ease-in-out infinite; }
+        .slide-in-3d { animation: slideIn3D 1s ease-out; }
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typewriter 3s steps(40, end);
+        }
+        .holographic-reveal { animation: holographicReveal 2s ease-out forwards; }
+        .twinkle { animation: twinkle 4s ease-in-out infinite; }
+
+        /* کنترل پنل شامل دکمه‌ها و لوگو */
+        .control-panel {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            z-index: 1001;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .control-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .theme-toggle, .music-toggle {
+            background: rgba(250, 204, 21, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover, .music-toggle:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 8px 25px rgba(250, 204, 21, 0.6);
+        }
+
+        .music-toggle.muted {
+            background: rgba(220, 38, 38, 0.9);
+        }
+
+        /* استایل جدید برای لوگو */
+        .logo-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(250, 204, 21, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 8px 25px rgba(250, 204, 21, 0.6);
+        }
+
+        .logo {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        /* لودر */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .quantum-loader {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin: 0 auto 20px;
+            transform-style: preserve-3d;
+            animation: quantumOrbit 4s linear infinite;
+        }
+        
+        .quantum-particle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #facc15;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #facc15;
+        }
+        
+        .particle-1 { top: 0; left: 50%; transform: translateX(-50%); }
+        .particle-2 { top: 50%; right: 0; transform: translateY(-50%); }
+        .particle-3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .particle-4 { top: 50%; left: 0; transform: translateY(-50%); }
+
+        /* صحنه نامه - کاملاً بازطراحی شده */
+        .letter-scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 183, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .nebula {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: nebulaPulse 8s ease-in-out infinite;
+        }
+
+        .nebula-1 {
+            top: 10%;
+            left: 10%;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.3) 0%, transparent 70%);
+            animation-delay: 0s;
+        }
+
+        .nebula-2 {
+            bottom: 10%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(0, 183, 235, 0.3) 0%, transparent 70%);
+            animation-delay: 2s;
+        }
+
+        .nebula-3 {
+            top: 50%;
+            right: 20%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.2) 0%, transparent 70%);
+            animation-delay: 4s;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 380px;
+            height: 260px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(250, 204, 21, 0.7));
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+            border-radius: 16px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 2px 0 rgba(255, 255, 255, 0.8),
+                0 0 0 3px rgba(250, 204, 21, 0.4),
+                0 0 50px rgba(250, 204, 21, 0.6);
+            animation: glow 4s ease-in-out infinite;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%),
+                linear-gradient(135deg, rgba(250, 204, 21, 0.2) 0%, transparent 50%);
+            animation: shimmer 4s linear infinite;
+            z-index: 2;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: -80px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 190px solid transparent;
+            border-right: 190px solid transparent;
+            border-bottom: 80px solid #fbbf24;
+            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+            transform-origin: bottom;
+            transition: all 0.5s ease;
+        }
+
+        .envelope-body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .envelope-content {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(8px);
+            transition: all 0.5s ease;
+            box-shadow: 
+                inset 0 4px 8px rgba(0,0,0,0.1),
+                0 8px 25px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .envelope:hover .envelope-content {
+            transform: translateY(0);
+        }
+
+        .envelope:hover .envelope-flap {
+            transform: rotateX(-15deg);
+        }
+
+        .envelope-title {
+            font-family: 'Samim', sans-serif;
+            font-size: 2.2rem;
+            color: #92400e;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .envelope-subtitle {
+            font-size: 1.3rem;
+            color: #78350f;
+            font-weight: bold;
+        }
+
+        /* انیمیشن‌های جدید باز شدن نامه */
+        .letter-opening .envelope {
+            animation: envelope3DOpen 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        .letter-opening .envelope-content {
+            animation: content3DReveal 2s ease-out 0.5s forwards;
+        }
+
+        .content-reveal {
+            animation: holographicReveal 2s ease-out forwards;
+        }
+
+        /* ذرات پویا */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #facc15;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .light-beam {
+            position: absolute;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #facc15, transparent);
+            opacity: 0;
+            filter: blur(1px);
+        }
+
+        /* محتوای اصلی */
+        .main-content {
+            display: none;
+        }
+
+        /* استایل‌های بخش‌های مختلف */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .speaker-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            border-color: rgba(250, 204, 21, 0.8);
+            box-shadow: 0 15px 40px rgba(250, 204, 21, 0.4);
+        }
+
+        /* استایل‌های جدید برای باکس‌های شمارش معکوس - بهبود یافته برای موبایل */
+        .countdown-box {
+            display: inline-block;
+            width: 90px;
+            height: 110px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            border: 2px solid #facc15;
+            border-radius: 15px;
+            margin: 0 12px;
+            text-align: center;
+            padding-top: 12px;
+            color: #facc15;
+            font-size: 28px;
+            font-weight: normal;
+            position: relative;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 8px 25px rgba(250, 204, 21, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .countdown-box span {
+            font-family: 'Samim', sans-serif;
+            font-size: 18px;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            color: #00b7eb;
+            text-shadow: 0 0 3px #00b7eb, 0 0 6px #00b7eb;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 0;
+            border-radius: 8px;
+        }
+
+        /* استایل‌های فرم */
+        .form-input {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            border-radius: 10px;
+            padding: 14px;
+            color: white;
+            width: 100%;
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #facc15;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #facc15, #eab308);
+            color: #1a1a1a;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(250, 204, 21, 0.6);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        /* ==================== استایل‌های جدید برای تم روشن - کاملاً بازطراحی شده ==================== */
+        .light-theme {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+            color: #2d3748 !important;
+        }
+
+        .light-theme .glass-card {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(25px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.8) !important;
+            color: #2d3748 !important;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .light-theme .form-input {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid rgba(102, 126, 234, 0.4) !important;
+            color: #2d3748 !important;
+        }
+
+        .light-theme .form-input:focus {
+            border-color: #667eea !important;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3) !important;
+            background: rgba(255, 255, 255, 1) !important;
+        }
+
+        .light-theme .countdown-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.15)) !important;
+            border: 2px solid #667eea !important;
+            color: #667eea !important;
+            box-shadow: 
+                0 10px 25px rgba(102, 126, 234, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .light-theme .countdown-box span {
+            color: #764ba2 !important;
+            text-shadow: 0 0 3px rgba(118, 75, 162, 0.5) !important;
+            background: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .light-theme .theme-toggle, .light-theme .music-toggle {
+            background: rgba(102, 126, 234, 0.9) !important;
+        }
+
+        .light-theme .theme-toggle:hover, .light-theme .music-toggle:hover {
+            background: rgba(102, 126, 234, 1) !important;
+        }
+
+        .light-theme .speaker-card {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(102, 126, 234, 0.4) !important;
+            color: #2d3748 !important;
+        }
+
+        .light-theme .speaker-card:hover {
+            border-color: rgba(102, 126, 234, 0.8) !important;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.25) !important;
+        }
+
+        .light-theme .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+            color: white !important;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+        }
+
+        .light-theme .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5) !important;
+            transform: translateY(-3px);
+        }
+
+        /* استایل‌های اضافی برای عناصر خاص در تم روشن - بهبود یافته */
+        .light-theme h1,
+        .light-theme h2,
+        .light-theme h3 {
+            color: #2d3748 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme .text-yellow-400 {
+            color: #667eea !important;
+        }
+
+        .light-theme .text-yellow-200 {
+            color: #764ba2 !important;
+        }
+
+        .light-theme .text-yellow-300 {
+            color: #5a67d8 !important;
+        }
+
+        .light-theme .text-gray-300 {
+            color: #4a5568 !important;
+        }
+
+        .light-theme .text-gray-400 {
+            color: #718096 !important;
+        }
+
+        /* بهبود contrast برای متن‌ها در تم روشن */
+        .light-theme p,
+        .light-theme label,
+        .light-theme .block {
+            color: #2d3748 !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .light-theme .admin-content {
+            background: #ffffff !important;
+            color: #2d3748 !important;
+            border: 2px solid #667eea !important;
+        }
+
+        .light-theme .stat-card {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #2d3748 !important;
+            border: 1px solid #667eea !important;
+        }
+
+        /* استایل لوگو در تم روشن */
+        .light-theme .logo-container {
+            background: rgba(102, 126, 234, 0.9) !important;
+        }
+
+        .light-theme .logo-container:hover {
+            background: rgba(102, 126, 234, 1) !important;
+        }
+
+        /* استایل لوگو در فوتر برای تم روشن */
+        .light-theme .footer-logo-container {
+            background: rgba(102, 126, 234, 0.9) !important;
+        }
+
+        /* پس‌زمینه جدید برای کانواس در تم روشن - بهبود یافته */
+        .light-theme #backgroundCanvas {
+            opacity: 0.6 !important;
+        }
+
+        .capacity-message {
+            display: none;
+            color: #ff4444;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(255, 68, 68, 0.1);
+            border-radius: 10px;
+            border: 1px solid #ff4444;
+        }
+
+        /* کانواس برای انیمیشن پس‌زمینه */
+        #backgroundCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* استایل‌های جدید برای بخش مسیر و دسترسی */
+        .map-placeholder {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .transport-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* موج انرژی */
+        .energy-wave {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(250, 204, 21, 0.8);
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* استایل‌های جدید برای پنل مدیریت */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .admin-content {
+            background: #1a1a2e;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 1200px;
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.3);
+            border: 2px solid #facc15;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #facc15;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #facc15;
+            display: block;
+        }
+
+        .stat-label {
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .registrations-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .registrations-table th {
+            background: #facc15;
+            color: #1a1a2e;
+            padding: 1rem;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .registrations-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .registrations-table tr:hover {
+            background: rgba(250, 204, 21, 0.1);
+        }
+
+        .admin-search {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #facc15;
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            width: 100%;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .admin-search:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+        }
+
+        .admin-btn {
+            background: linear-gradient(135deg, #facc15, #eab308);
+            color: #1a1a1a;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.4);
+        }
+
+        .admin-btn.secondary {
+            background: linear-gradient(135deg, #00b7eb, #0099cc);
+        }
+
+        .admin-btn.danger {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        .export-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* استایل‌های جدید برای امنیت */
+        .security-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .security-code {
+            background: #1a1a2e;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #facc15;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        /* استایل‌های جدید برای فیلدهای ورود - تصحیح شده */
+        .login-input {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid #facc15 !important;
+            border-radius: 10px;
+            padding: 1rem;
+            color: white !important;
+            width: 100%;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: normal !important;
+        }
+
+        .login-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.5) !important;
+            background: rgba(255, 255, 255, 0.3) !important;
+            color: white !important;
+        }
+
+        .login-input::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+            opacity: 1 !important;
+        }
+
+        .security-code input {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .security-code input::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+        
+        .code-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+        }
+        
+        .security-note {
+            font-size: 0.8rem;
+            color: #facc15;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+
+        /* استایل جدید برای فرم ورود دو مرحله‌ای */
+        .login-input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-label {
+            display: block;
+            color: #facc15;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* استایل جدید برای لوگو در فوتر */
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .light-theme .footer-logo {
+            border-top: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .footer-logo-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(250, 204, 21, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(250, 204, 21, 0.6);
+        }
+
+        .footer-logo-img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .footer-logo-text {
+            font-size: 1.1rem;
+            color: #facc15;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .light-theme .footer-logo-text {
+            color: #667eea !important;
+        }
+
+        /* استایل‌های ریسپانسیو برای موبایل */
+        @media (max-width: 768px) {
+            .control-panel {
+                top: 15px;
+                left: 15px;
+                right: 15px;
+            }
+
+            .theme-toggle, .music-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .logo-container {
+                width: 50px;
+                height: 50px;
+            }
+
+            .footer-logo-container {
+                width: 80px;
+                height: 80px;
+            }
+
+            .footer-logo-text {
+                font-size: 1rem;
+            }
+
+            .envelope-container {
+                width: 300px;
+                height: 200px;
+            }
+            
+            .envelope-flap {
+                top: -60px;
+                border-left: 150px solid transparent;
+                border-right: 150px solid transparent;
+                border-bottom: 60px solid #fbbf24;
+            }
+            
+            .envelope-content {
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                padding: 25px;
+            }
+            
+            .envelope-title {
+                font-size: 1.8rem;
+            }
+            
+            .envelope-subtitle {
+                font-size: 1rem;
+            }
+            
+            .glass-card {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            /* استایل‌های مخصوص موبایل برای شمارش معکوس */
+            .countdown-box {
+                width: 70px;
+                height: 90px;
+                margin: 0 8px;
+                font-size: 24px;
+                border-width: 2px;
+            }
+            
+            .countdown-box span {
+                font-size: 14px;
+                top: 62%;
+                padding: 3px 0;
+            }
+            
+            #countdown {
+                gap: 8px;
+            }
+            
+            .speaker-card {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+            
+            .btn-primary {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .grid {
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            h2 {
+                font-size: 2rem !important;
+            }
+            
+            .text-5xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .text-7xl {
+                font-size: 3.5rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-lg {
+                font-size: 1.125rem !important;
+            }
+            
+            .p-4 {
+                padding: 1rem;
+            }
+            
+            .pt-8 {
+                padding-top: 2rem;
+            }
+            
+            .mb-12 {
+                margin-bottom: 3rem;
+            }
+            
+            .mb-6 {
+                margin-bottom: 1.5rem;
+            }
+            
+            .mb-8 {
+                margin-bottom: 2rem;
+            }
+            
+            .space-y-4 > * + * {
+                margin-top: 1rem;
+            }
+            
+            .flex-wrap {
+                flex-wrap: wrap;
+            }
+            
+            .gap-4 {
+                gap: 1rem;
+            }
+            
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .transport-icon {
+                font-size: 1.5rem;
+            }
+            
+            .map-placeholder {
+                padding: 1.5rem;
+            }
+            
+            .typewriter {
+                white-space: normal;
+                animation: none;
+                width: 100%;
+            }
+            
+            /* کاهش پیچیدگی انیمیشن‌ها در موبایل */
+            .quantum-loader {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .quantum-particle {
+                width: 12px;
+                height: 12px;
+            }
+            
+            .nebula {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* پنل مدیریت در موبایل */
+            .admin-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .admin-content {
+                padding: 1rem;
+                margin: 1rem;
+            }
+            
+            .export-options {
+                flex-direction: column;
+            }
+            
+            .admin-btn {
+                width: 100%;
+                margin: 0.2rem 0;
+            }
+            
+            .registrations-table {
+                font-size: 0.8rem;
+            }
+            
+            .registrations-table th,
+            .registrations-table td {
+                padding: 0.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope-container {
+                width: 250px;
+                height: 170px;
+            }
+            
+            .envelope-flap {
+                top: -50px;
+                border-left: 125px solid transparent;
+                border-right: 125px solid transparent;
+                border-bottom: 50px solid #fbbf24;
+            }
+            
+            .envelope-content {
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                padding: 20px;
+            }
+            
+            .envelope-title {
+                font-size: 1.5rem;
+            }
+            
+            .envelope-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            /* استایل‌های مخصوص موبایل کوچک برای شمارش معکوس */
+            .countdown-box {
+                width: 60px;
+                height: 75px;
+                margin: 0 4px;
+                font-size: 20px;
+                border-radius: 12px;
+            }
+            
+            .countdown-box span {
+                font-size: 12px;
+                top: 60%;
+                padding: 2px 0;
+            }
+            
+            #countdown {
+                gap: 4px;
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+            }
+            
+            .text-7xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .footer-logo-container {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .footer-logo-text {
+                font-size: 0.9rem;
+            }
+            
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <!-- لایه امنیتی برای پنل مدیریت -->
+    <div id="securityOverlay" class="security-overlay">
+        <div class="security-code">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">ورود امن به پنل مدیریت</h2>
+            <p class="text-gray-300 mb-4">لطفاً نام کاربری و رمز عبور را وارد کنید</p>
+            
+            <div class="login-input-group">
+                <label class="login-label">نام کاربری</label>
+                <input type="text" id="adminUsername" class="login-input" placeholder="نام کاربری" />
+            </div>
+            
+            <div class="login-input-group">
+                <label class="login-label">رمز عبور</label>
+                <input type="text" id="adminPassword" class="login-input" placeholder="رمز عبور" />
+            </div>
+            
+            <button onclick="checkAdminCredentials()" class="admin-btn mt-4">ورود به پنل</button>
+        </div>
+    </div>
+
+    <!-- کنترل پنل شامل دکمه‌ها و لوگو -->
+    <div class="control-panel">
+        <div class="control-buttons">
+            <button class="theme-toggle" onclick="toggleTheme()" title="تغییر تم">
+                🌓
+            </button>
+            <button class="music-toggle" onclick="toggleMusic()" title="کنترل صدا">
+                🎵
+            </button>
+        </div>
+        <div class="logo-container">
+            <img src="Anesthesia_Medical_Service_Logo__2_-removebg-preview.png" alt="لوگو" class="logo">
+        </div>
+    </div>
+
+    <!-- المان‌های صوتی -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="0bikalam-download1music.ir-5.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- لودر -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="quantum-loader">
+                <div class="quantum-particle particle-1"></div>
+                <div class="quantum-particle particle-2"></div>
+                <div class="quantum-particle particle-3"></div>
+                <div class="quantum-particle particle-4"></div>
+            </div>
+            <p style="color: #facc15; font-size: 1.3rem;">در حال بارگذاری دعوت‌نامه...</p>
+        </div>
+    </div>
+
+    <!-- کانواس برای انیمیشن پس‌زمینه -->
+    <canvas id="backgroundCanvas"></canvas>
+
+    <!-- صحنه نامه -->
+    <div class="letter-scene" id="letterScene">
+        <!-- سحابی‌های پویا -->
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+        
+        <!-- پرتوهای نور -->
+        <div class="light-beam" style="top: 10%; left: 20%; transform: rotate(45deg);"></div>
+        <div class="light-beam" style="top: 30%; right: 15%; transform: rotate(-30deg);"></div>
+        <div class="light-beam" style="bottom: 20%; left: 25%; transform: rotate(15deg);"></div>
+        
+        <div class="envelope-container">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+                <div class="envelope-content">
+                    <div class="envelope-title">دعوت‌نامه رسمی</div>
+                    <div class="envelope-subtitle">جشن روز جهانی هوشبری ۱۴۰۴</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- پنل مدیریت -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-content">
+            <div id="adminSection" style="display: none;">
+                <div class="admin-header">
+                    <h2 class="text-3xl font-bold text-yellow-400">پنل مدیریت ثبت‌نام‌ها</h2>
+                    <button onclick="closeAdminPanel()" class="admin-btn danger">خروج</button>
+                </div>
+
+                <!-- آمار -->
+                <div class="admin-stats" id="adminStats">
+                    <!-- آمار به صورت دینامیک پر می‌شود -->
+                </div>
+
+                <!-- ابزارها -->
+                <div class="export-options">
+                    <button onclick="exportToExcel()" class="admin-btn secondary">📊 خروجی Excel</button>
+                    <button onclick="exportToPDF()" class="admin-btn secondary">📄 خروجی PDF</button>
+                    <button onclick="clearAllData()" class="admin-btn danger">🗑️ حذف همه داده‌ها</button>
+                    <button onclick="refreshData()" class="admin-btn">🔄 بروزرسانی</button>
+                    <button onclick="syncWithServer()" class="admin-btn secondary" id="syncBtn">🔄 همگام‌سازی با GitHub</button>
+                </div>
+
+                <!-- جستجو -->
+                <input type="text" id="adminSearch" class="admin-search" placeholder="جستجو در ثبت‌نام‌ها..." />
+
+                <!-- جدول ثبت‌نام‌ها -->
+                <div style="overflow-x: auto;">
+                    <table class="registrations-table">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام و نام خانوادگی</th>
+                                <th>شماره تماس</th>
+                                <th>رشته تحصیلی</th>
+                                <th>نقش</th>
+                                <th>تعداد همراهان</th>
+                                <th>تاریخ ثبت‌نام</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="registrationsTable">
+                            <!-- داده‌ها به صورت دینامیک پر می‌شود -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div id="mainContent" class="main-content">
+        <div class="container mx-auto max-w-5xl p-4 relative z-10">
+            
+            <!-- هدر اصلی -->
+            <div class="text-center mb-12 pt-8">
+                <h1 class="text-5xl md:text-7xl font-bold text-yellow-400 mb-6 typewriter">
+                    جشن روز جهانی هوشبری ۱۴۰۴
+                </h1>
+                <p class="text-2xl text-yellow-200 fade-in">
+                    دعوت رسمی از متخصصین اساتید کارشناسان و دانشجویان هوشبری
+                </p>
+            </div>
+
+            <!-- جزئیات مراسم -->
+            <div class="glass-card slide-in-3d mb-8">
+                <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">📅 جزئیات مراسم</h2>
+                <div class="grid md:grid-cols-2 gap-6 text-lg">
+                    <div class="space-y-4">
+                        <p><strong>تاریخ:</strong> یکشنبه، ۲۷ مهر ۱۴۰۴</p>
+                        <p><strong>ساعت:</strong> ۱۹:۰۰ الی ۲۲:۰۰</p>
+                        <p><strong>آدرس:</strong> گناباد خیابان امام خمینی، روبه روی باغ ملی، ستاد مرکزی علوم پزشکی گناباد</p>
+                        <p><strong>مکان:</strong> سالن همایش‌های چمران</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- شمارش معکوس -->
+            <div class="glass-card slide-in-3d mb-8">
+                <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">⏳ شمارش معکوس</h2>
+                <div id="countdown" class="text-4xl md:text-5xl font-mono text-yellow-300 flex justify-center items-center flex-wrap gap-4">
+                    <div class="countdown-box"><span>روز</span></div>
+                    <div class="countdown-box"><span>ساعت</span></div>
+                    <div class="countdown-box"><span>دقیقه</span></div>
+                    <div class="countdown-box"><span>ثانیه</span></div>
+                </div>
+            </div>
+
+            <!-- فرم ثبت نام -->
+            <div class="glass-card slide-in-3d mb-8">
+                <h2 class="text-3xl font-bold text-yellow-400 mb-6 text-center">📝 فرم ثبت نام </h2>
+                <div class="capacity-message" id="capacityMessage">⚠️ ظرفیت مراسم تکمیل شده است</div>
+                <form id="rsvpForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-yellow-200 mb-2">نام و نام خانوادگی *</label>
+                            <input type="text" class="form-input" id="name" required oninput="validatePersian(this)">
+                        </div>
+                        <div>
+                            <label class="block text-yellow-200 mb-2">شماره تماس *</label>
+                            <input type="tel" class="form-input" id="phone" required oninput="validateNumbers(this)">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-yellow-200 mb-2">نقش / سمت *</label>
+                        <select class="form-input" id="role" required onchange="toggleRoleFields()">
+                            <option value="">-- لطفا انتخاب کنید --</option>
+                            <option value="استاد">استاد</option>
+                            <option value="کارشناس">کارشناس</option>
+                            <option value="دانشجو">دانشجو</option>
+                        </select>
+                    </div>
+                    <div id="guestsField" style="display: none;">
+                        <label class="block text-yellow-200 mb-2">تعداد همراهان (حداکثر ۳ نفر)</label>
+                        <input type="number" class="form-input" id="guests" min="0" max="3" value="0">
+                    </div>
+                    <div id="majorField" style="display: none;">
+                        <label class="block text-yellow-200 mb-2">رشته تحصیلی *</label>
+                        <input type="text" class="form-input" id="major" oninput="validatePersian(this)">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary text-lg px-8 py-3" id="submitBtn">
+                            تأیید حضور در مراسم
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ارتباط با ما -->
+            <div class="glass-card text-center">
+                <h2 class="text-3xl font-bold text-yellow-400 mb-6">📱 ارتباط با ما</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="openInstagram()" class="btn-primary" style="background: linear-gradient(135deg, #E1306C, #C13584);">
+                         اینستاگرام
+                    </button>
+                    <button onclick="openTelegram()" class="btn-primary" style="background: linear-gradient(135deg, #0088cc, #00aced);">
+                         تلگرام
+                    </button>
+                </div>
+            </div>
+
+            <!-- فوتر -->
+            <div class="text-center mt-12 mb-8">
+                <p class="text-yellow-200 text-lg">ساخته شده توسط erfan-s05@ برای روز جهانی هوشبری</p>
+                
+                <!-- لوگو در فوتر -->
+                <div class="footer-logo">
+                    <div class="footer-logo-container">
+                        <img src="Anesthesia_Medical_Service_Logo__2_-removebg-preview.png" alt="لوگو" class="footer-logo-img">
+                    </div>
+                    <div class="footer-logo-text">انجمن هوشبری گناباد</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== تنظیمات GitHub ====================
+        const GITHUB_CONFIG = {
+            username: 'erfan04s',
+            repo: 'anesthesia-registrations-1404',
+            filePath: 'data/registrations.json',
+            token: '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'
+        };
+
+        // حالت ذخیره‌سازی
+        let storageMode = 'github'; // 'github' یا 'local'
+
+        // ==================== توابع GitHub ====================
+
+        // دریافت SHA فایل برای آپدیت
+        async function getFileSHA() {
+            try {
+                const response = await fetch(
+                    `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`,
+                    {
+                        headers: {
+                            'Authorization': `token ${GITHUB_CONFIG.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    }
+                );
+                
+                if (response.status === 200) {
+                    const fileData = await response.json();
+                    return fileData.sha;
+                }
+                return null; // فایل وجود ندارد
+            } catch (error) {
+                console.warn('خطا در دریافت SHA فایل:', error);
+                return null;
+            }
+        }
+
+        // آپلود داده به GitHub
+        async function updateGitHubFile(data) {
+            try {
+                const fileSHA = await getFileSHA();
+                
+                const response = await fetch(
+                    `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${GITHUB_CONFIG.token}`,
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/vnd.github.v3+json'
+                        },
+                        body: JSON.stringify({
+                            message: `ثبت‌نام جدید - ${new Date().toLocaleString('fa-IR')}`,
+                            content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
+                            sha: fileSHA
+                        })
+                    }
+                );
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'خطا در آپلود');
+                }
+                
+                console.log('✅ داده با موفقیت در GitHub ذخیره شد');
+                return await response.json();
+                
+            } catch (error) {
+                console.error('❌ خطا در آپلود به GitHub:', error);
+                throw error;
+            }
+        }
+
+        // دریافت داده‌ها از GitHub
+        async function getRegistrationsFromGitHub() {
+            try {
+                const response = await fetch(
+                    `https://raw.githubusercontent.com/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/main/${GITHUB_CONFIG.filePath}?t=${Date.now()}`
+                );
+                
+                if (!response.ok) {
+                    throw new Error(`خطای HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log(`📊 ${data.length} ثبت‌نام از GitHub دریافت شد`);
+                return data;
+                
+            } catch (error) {
+                console.warn('⚠️ خطا در دریافت از GitHub:', error);
+                storageMode = 'local';
+                return getAllRegistrationsFromLocalStorage();
+            }
+        }
+
+        // ==================== سیستم پشتیبان LocalStorage ====================
+
+        // ذخیره در localStorage
+        function saveRegistrationToLocalStorage(formData) {
+            try {
+                let allRegistrations = JSON.parse(localStorage.getItem('allRegistrations')) || [];
+                const newRegistration = {
+                    id: 'local_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                    name: formData.name,
+                    phone: formData.phone,
+                    role: formData.role,
+                    major: formData.major || '',
+                    guests: parseInt(formData.guests) || 0,
+                    timestamp: new Date().toLocaleString('fa-IR'),
+                    createdAt: new Date().toISOString(),
+                    source: 'local'
+                };
+                
+                allRegistrations.unshift(newRegistration);
+                localStorage.setItem('allRegistrations', JSON.stringify(allRegistrations));
+                console.log('💾 داده در localStorage ذخیره شد');
+                return true;
+            } catch (error) {
+                console.error('❌ خطا در localStorage:', error);
+                return false;
+            }
+        }
+
+        // خواندن از localStorage
+        function getAllRegistrationsFromLocalStorage() {
+            try {
+                const data = JSON.parse(localStorage.getItem('allRegistrations')) || [];
+                console.log(`📁 ${data.length} ثبت‌نام از localStorage خوانده شد`);
+                return data;
+            } catch (error) {
+                console.error('❌ خطا در خواندن از localStorage:', error);
+                return [];
+            }
+        }
+
+        // ==================== توابع اصلی سیستم ====================
+
+        // ذخیره ثبت‌نام (اصلی)
+        async function saveRegistrationToSheets(formData) {
+            // ابتدا در GitHub سعی کن
+            if (storageMode === 'github') {
+                try {
+                    const currentData = await getRegistrationsFromGitHub();
+                    const newRegistration = {
+                        id: 'github_' + Date.now(),
+                        name: formData.name,
+                        phone: formData.phone,
+                        role: formData.role,
+                        major: formData.major || '',
+                        guests: parseInt(formData.guests) || 0,
+                        timestamp: new Date().toLocaleString('fa-IR'),
+                        createdAt: new Date().toISOString(),
+                        source: 'github'
+                    };
+                    
+                    currentData.push(newRegistration);
+                    await updateGitHubFile(currentData);
+                    return true;
+                    
+                } catch (error) {
+                    console.warn('⚠️ ذخیره در GitHub ناموفق، سوئیچ به localStorage');
+                    storageMode = 'local';
+                }
+            }
+            
+            // اگر GitHub کار نکرد، در localStorage ذخیره کن
+            return saveRegistrationToLocalStorage(formData);
+        }
+
+        // دریافت تمام ثبت‌نام‌ها
+        async function getAllRegistrationsFromSheets() {
+            if (storageMode === 'github') {
+                try {
+                    return await getRegistrationsFromGitHub();
+                } catch (error) {
+                    storageMode = 'local';
+                }
+            }
+            return getAllRegistrationsFromLocalStorage();
+        }
+
+        // همگام‌سازی داده‌های محلی با GitHub
+        async function syncWithServer() {
+            const syncBtn = document.getElementById('syncBtn');
+            const originalText = syncBtn.innerHTML;
+            
+            syncBtn.innerHTML = '⏳ در حال همگام‌سازی...';
+            syncBtn.disabled = true;
+            
+            try {
+                const localRegistrations = getAllRegistrationsFromLocalStorage();
+                const githubRegistrations = await getRegistrationsFromGitHub();
+                
+                if (localRegistrations.length === 0) {
+                    syncBtn.innerHTML = '✅ هیچ داده‌ای برای همگام‌سازی نیست';
+                    setTimeout(() => {
+                        syncBtn.innerHTML = originalText;
+                        syncBtn.disabled = false;
+                    }, 2000);
+                    return;
+                }
+                
+                // ادغام داده‌ها
+                const allRegistrations = [...githubRegistrations];
+                let syncedCount = 0;
+                
+                for (const localReg of localRegistrations) {
+                    // اگر در GitHub وجود ندارد، اضافه کن
+                    if (!githubRegistrations.some(githubReg => githubReg.id === localReg.id)) {
+                        allRegistrations.push({
+                            ...localReg,
+                            source: 'github',
+                            id: 'synced_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5)
+                        });
+                        syncedCount++;
+                    }
+                }
+                
+                // آپلود به GitHub
+                if (syncedCount > 0) {
+                    await updateGitHubFile(allRegistrations);
+                    // پاک کردن localStorage بعد از همگام‌سازی موفق
+                    localStorage.removeItem('allRegistrations');
+                    storageMode = 'github';
+                    
+                    syncBtn.innerHTML = `✅ ${syncedCount} مورد همگام‌سازی شد`;
+                    await loadAdminData(); // رفرش داده‌ها
+                } else {
+                    syncBtn.innerHTML = '✅ داده‌ها از قبل همگام هستند';
+                }
+                
+            } catch (error) {
+                console.error('❌ خطا در همگام‌سازی:', error);
+                syncBtn.innerHTML = '❌ خطا در همگام‌سازی';
+            }
+            
+            setTimeout(() => {
+                syncBtn.innerHTML = originalText;
+                syncBtn.disabled = false;
+            }, 3000);
+        }
+
+        // ==================== سیستم دسترسی مخفی به پنل مدیریت ====================
+        
+        let tapCount = 0;
+        let lastTapTime = 0;
+        let keyComboCount = 0;
+        let lastKeyComboTime = 0;
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // تشخیص سه بار کلیک روی صفحه (برای موبایل)
+        document.addEventListener('click', function(e) {
+            if (isMobile) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTapTime;
+                
+                if (tapLength < 500 && tapLength > 0) {
+                    tapCount++;
+                } else {
+                    tapCount = 1;
+                }
+                
+                lastTapTime = currentTime;
+                
+                if (tapCount === 3) {
+                    tapCount = 0;
+                    showAdminAccess();
+                }
+            }
+        });
+
+        // تشخیص دو بار فشار دادن Ctrl + Shift (برای دسکتاپ)
+        document.addEventListener('keydown', function(e) {
+            if (!isMobile && e.ctrlKey && e.shiftKey) {
+                const currentTime = new Date().getTime();
+                const keyComboLength = currentTime - lastKeyComboTime;
+                
+                if (keyComboLength < 1000 && keyComboLength > 0) {
+                    keyComboCount++;
+                } else {
+                    keyComboCount = 1;
+                }
+                
+                lastKeyComboTime = currentTime;
+                
+                if (keyComboCount === 2) {
+                    keyComboCount = 0;
+                    showAdminAccess();
+                }
+                
+                // جلوگیری از رفتار پیش‌فرض مرورگر
+                e.preventDefault();
+            }
+        });
+
+        // نمایش پنل دسترسی مدیریت
+        function showAdminAccess() {
+            document.getElementById('securityOverlay').style.display = 'flex';
+            document.getElementById('adminUsername').value = '';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminUsername').focus();
+        }
+
+        // ==================== سیستم احراز هویت ====================
+
+        function checkAdminCredentials() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // نام کاربری ثابت
+            const correctUsername = 'erfan04';
+            
+            // تولید رمز عبور پویا بر اساس ساعت و دقیقه فعلی
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const dynamicPassword = hours + minutes;
+            
+            if (username === correctUsername && password === dynamicPassword) {
+                // ورود موفق
+                document.getElementById('securityOverlay').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('adminSection').style.display = 'block';
+                loadAdminData();
+                
+                alert('ورود به پنل مدیریت موفقیت‌آمیز بود!');
+            } else {
+                // ورود ناموفق
+                let errorMessage = 'اطلاعات ورود نامعتبر است!\n\n';
+                
+                if (username !== correctUsername) {
+                    errorMessage += '• نام کاربری اشتباه است\n';
+                }
+                
+                if (password !== dynamicPassword) {
+                    errorMessage += '• رمز عبور اشتباه است\n';
+                }
+                
+                alert(errorMessage);
+                
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('adminPassword').focus();
+            }
+        }
+
+        // مدیریت رویداد کیبورد برای فرم ورود
+        document.getElementById('adminUsername').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('adminPassword').focus();
+            }
+        });
+
+        document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAdminCredentials();
+            }
+        });
+
+        // بستن لایه امنیتی با کلیک خارج از آن
+        document.getElementById('securityOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // بستن پنل مدیریت
+        function closeAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        // ==================== پنل مدیریت ====================
+
+        // بارگذاری داده‌ها در پنل مدیریت
+        async function loadAdminData() {
+            try {
+                const registrations = await getAllRegistrationsFromSheets();
+                updateAdminStats(registrations);
+                updateRegistrationsTable(registrations);
+                setupSearchFilter();
+                
+                // نمایش وضعیت ذخیره‌سازی
+                const syncBtn = document.getElementById('syncBtn');
+                if (storageMode === 'github') {
+                    syncBtn.innerHTML = '✅ متصل به GitHub';
+                    syncBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                } else {
+                    syncBtn.innerHTML = '💾 حالت آفلاین';
+                    syncBtn.style.background = 'linear-gradient(135deg, #F59E0B, #D97706)';
+                }
+            } catch (error) {
+                console.error('خطا در بارگذاری داده‌ها:', error);
+            }
+        }
+
+        // به‌روزرسانی آمار
+        function updateAdminStats(registrations) {
+            const total = registrations.length;
+            const professors = registrations.filter(r => r.role === 'استاد').length;
+            const experts = registrations.filter(r => r.role === 'کارشناس').length;
+            const students = registrations.filter(r => r.role === 'دانشجو').length;
+            const totalGuests = registrations.reduce((sum, r) => sum + (parseInt(r.guests) || 0), 0);
+            const totalParticipants = total + totalGuests;
+
+            document.getElementById('adminStats').innerHTML = `
+                <div class="stat-card">
+                    <span class="stat-number">${total}</span>
+                    <span class="stat-label">ثبت‌نام مستقیم</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${professors}</span>
+                    <span class="stat-label">اساتید</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${experts}</span>
+                    <span class="stat-label">کارشناسان</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${students}</span>
+                    <span class="stat-label">دانشجویان</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${totalGuests}</span>
+                    <span class="stat-label">همراهان</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${totalParticipants}</span>
+                    <span class="stat-label">شرکت‌کنندگان کل</span>
+                </div>
+            `;
+        }
+
+        // به‌روزرسانی جدول ثبت‌نام‌ها
+        function updateRegistrationsTable(registrations) {
+            const tbody = document.getElementById('registrationsTable');
+            tbody.innerHTML = '';
+
+            if (registrations.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem; color: #ccc;">هیچ ثبت‌نامی یافت نشد</td></tr>';
+                return;
+            }
+
+            registrations.forEach((reg, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${reg.name || '-'}</td>
+                    <td>${reg.phone || '-'}</td>
+                    <td>${reg.major || '-'}</td>
+                    <td>${reg.role || '-'}</td>
+                    <td>${reg.guests || 0}</td>
+                    <td>${reg.timestamp || '-'}</td>
+                    <td>
+                        <button onclick="deleteRegistration('${reg.id}')" class="admin-btn danger" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;">حذف</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // تنظیم فیلتر جستجو
+        function setupSearchFilter() {
+            const searchInput = document.getElementById('adminSearch');
+            searchInput.addEventListener('input', async function() {
+                const searchTerm = this.value.toLowerCase();
+                const allRegistrations = await getAllRegistrationsFromSheets();
+                
+                const filtered = allRegistrations.filter(reg => 
+                    (reg.name && reg.name.toLowerCase().includes(searchTerm)) ||
+                    (reg.phone && reg.phone.includes(searchTerm)) ||
+                    (reg.major && reg.major.toLowerCase().includes(searchTerm)) ||
+                    (reg.role && reg.role.toLowerCase().includes(searchTerm))
+                );
+                
+                updateRegistrationsTable(filtered);
+            });
+        }
+
+        // حذف یک ثبت‌نام
+        async function deleteRegistration(registrationId) {
+            if (confirm('آیا از حذف این ثبت‌نام مطمئن هستید؟')) {
+                try {
+                    if (storageMode === 'github') {
+                        // حذف از GitHub
+                        const allRegistrations = await getRegistrationsFromGitHub();
+                        const updatedRegistrations = allRegistrations.filter(reg => reg.id !== registrationId);
+                        await updateGitHubFile(updatedRegistrations);
+                    }
+                    
+                    // حذف از localStorage
+                    const localRegistrations = getAllRegistrationsFromLocalStorage();
+                    const updatedLocal = localRegistrations.filter(reg => reg.id !== registrationId);
+                    localStorage.setItem('allRegistrations', JSON.stringify(updatedLocal));
+                    
+                    await loadAdminData();
+                    alert('ثبت‌نام با موفقیت حذف شد.');
+                    
+                } catch (error) {
+                    console.error('خطا در حذف:', error);
+                    alert('خطا در حذف ثبت‌نام.');
+                }
+            }
+        }
+
+        // حذف همه داده‌ها
+        function clearAllData() {
+            if (confirm('⚠️ آیا از حذف تمامی داده‌های ثبت‌نام مطمئن هستید؟ این عمل غیرقابل بازگشت است!')) {
+                localStorage.removeItem('allRegistrations');
+                if (storageMode === 'github') {
+                    // پاک کردن فایل GitHub
+                    updateGitHubFile([]).catch(e => console.error('خطا در پاک کردن GitHub:', e));
+                }
+                loadAdminData();
+                alert('تمامی داده‌ها با موفقیت حذف شدند.');
+            }
+        }
+
+        // بروزرسانی داده‌ها
+        function refreshData() {
+            loadAdminData();
+            alert('داده‌ها بروزرسانی شدند.');
+        }
+
+        // خروجی Excel
+        function exportToExcel() {
+            const registrations = getAllRegistrationsFromLocalStorage();
+            if (registrations.length === 0) {
+                alert('هیچ داده‌ای برای خروجی وجود ندارد.');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,\ufeff";
+            
+            // هدر
+            csvContent += "ردیف,نام و نام خانوادگی,شماره تماس,رشته تحصیلی,نقش,تعداد همراهان,تاریخ ثبت‌نام\n";
+            
+            // داده‌ها
+            registrations.forEach((reg, index) => {
+                const row = [
+                    index + 1,
+                    `"${reg.name || ''}"`,
+                    `"${reg.phone || ''}"`,
+                    `"${reg.major || ''}"`,
+                    `"${reg.role || ''}"`,
+                    reg.guests || 0,
+                    `"${reg.timestamp || ''}"`
+                ];
+                csvContent += row.join(',') + '\n';
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "ثبت_نام_های_جشن_هوشبری.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // خروجی PDF (ساده)
+        function exportToPDF() {
+            const registrations = getAllRegistrationsFromLocalStorage();
+            if (registrations.length === 0) {
+                alert('هیچ داده‌ای برای خروجی وجود ندارد.');
+                return;
+            }
+
+            let printContent = `
+                <html>
+                <head>
+                    <title>گزارش ثبت‌نام‌های جشن هوشبری</title>
+                    <style>
+                        body { font-family: Tahoma; direction: rtl; padding: 20px; }
+                        h1 { text-align: center; color: #facc15; }
+                        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                        th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+                        th { background-color: #facc15; color: #000; }
+                        tr:nth-child(even) { background-color: #f2f2f2; }
+                    </style>
+                </head>
+                <body>
+                    <h1>گزارش ثبت‌نام‌های جشن روز جهانی هوشبری ۱۴۰۴</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام و نام خانوادگی</th>
+                                <th>شماره تماس</th>
+                                <th>رشته تحصیلی</th>
+                                <th>نقش</th>
+                                <th>همراهان</th>
+                                <th>تاریخ ثبت‌نام</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            registrations.forEach((reg, index) => {
+                printContent += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${reg.name || '-'}</td>
+                        <td>${reg.phone || '-'}</td>
+                        <td>${reg.major || '-'}</td>
+                        <td>${reg.role || '-'}</td>
+                        <td>${reg.guests || 0}</td>
+                        <td>${reg.timestamp || '-'}</td>
+                    </tr>
+                `;
+            });
+
+            printContent += `
+                        </tbody>
+                    </table>
+                    <p style="text-align: left; margin-top: 30px; font-size: 12px; color: #666;">
+                        تاریخ تولید گزارش: ${new Date().toLocaleString('fa-IR')}
+                    </p>
+                </body>
+                </html>
+            `;
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // ==================== بقیه توابع سیستم ====================
+
+        // تابع جدید برای مدیریت فیلدهای نقش
+        function toggleRoleFields() {
+            const roleField = document.getElementById('role');
+            const guestsField = document.getElementById('guestsField');
+            const majorField = document.getElementById('majorField');
+            const guestsInput = document.getElementById('guests');
+            const majorInput = document.getElementById('major');
+            
+            // مخفی کردن همه فیلدها ابتدا
+            guestsField.style.display = 'none';
+            majorField.style.display = 'none';
+            
+            if (roleField.value === 'استاد' || roleField.value === 'کارشناس') {
+                guestsField.style.display = 'block';
+                guestsInput.setAttribute('max', '3');
+                majorInput.value = ''; // پاک کردن مقدار رشته تحصیلی
+            } else if (roleField.value === 'دانشجو') {
+                majorField.style.display = 'block';
+                guestsInput.value = '0'; // مقدار همراهان را صفر کن
+            } else {
+                guestsInput.value = '0';
+                majorInput.value = '';
+            }
+        }
+
+        // توابع جدید برای باز کردن شبکه‌های اجتماعی
+        function openInstagram() {
+            window.open('http://instagram.com/anesthesia.gmu', '_blank');
+        }
+
+        function openTelegram() {
+            window.open('https://t.me/Anesthesia_gmu', '_blank');
+        }
+
+        // ==================== تابع جدید برای به‌روزرسانی صحنه Three.js در تم روشن ====================
+        function updateSceneForTheme() {
+            const canvas = document.getElementById('backgroundCanvas');
+            if (!canvas) return;
+            
+            const isLightTheme = document.body.classList.contains('light-theme');
+            
+            if (isLightTheme) {
+                // افزایش شدت اثرات در تم روشن برای وضوح بیشتر
+                canvas.style.opacity = '0.6';
+            } else {
+                // بازگشت به حالت عادی در تم تیره
+                canvas.style.opacity = '1';
+            }
+        }
+
+        // ایجاد انیمیشن پس‌زمینه با موج‌های کاملاً پیوسته و حرکت از چپ به راست
+        function createAdvancedBackground() {
+            const canvas = document.getElementById('backgroundCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ 
+                canvas: canvas,
+                alpha: true,
+                antialias: true 
+            });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // آرایه برای نگهداری خطوط موج
+            const medicalLines = [];
+
+            // تابع برای ایجاد یک موج کاملاً پیوسته با حرکت از چپ به راست
+            function createContinuousMedicalLine(type, color, yOffset, speed, amplitude, thickness = 2) {
+                const segments = 1500;
+                const totalLength = 2400;
+                
+                const points = [];
+                
+                for (let i = 0; i <= segments; i++) {
+                    const x = (i / segments) * totalLength - totalLength/2;
+                    
+                    // محاسبه موقعیت موج برای ایجاد یک نمودار پیوسته
+                    const normalizedX = (x + totalLength/2) / 40;
+                    
+                    let y = 0;
+                    
+                    if (type === 'ecg') {
+                        // الگوی نوار قلب پیوسته
+                        const phase = normalizedX % 1;
+                        
+                        if (phase < 0.125) y = 0;
+                        else if (phase < 0.25) y = Math.sin((phase - 0.125) * 8 * Math.PI) * 0.5;
+                        else if (phase < 0.3) y = 0;
+                        else if (phase < 0.475) {
+                            const qrsPhase = (phase - 0.3) / 0.175;
+                            if (qrsPhase < 0.3) y = -Math.sin(qrsPhase * 3.14 * 2) * 1.0;
+                            else if (qrsPhase < 0.6) y = Math.sin((qrsPhase - 0.3) * 3.14) * 2.0;
+                            else if (qrsPhase < 0.85) y = -Math.sin((qrsPhase - 0.6) * 2.0 * Math.PI) * 0.9;
+                            else y = 0;
+                        }
+                        else if (phase < 0.65) y = Math.sin((phase - 0.475) * 8 * Math.PI) * 0.3;
+                        else if (phase < 0.825) y = Math.sin((phase - 0.65) * 6 * Math.PI) * 0.8;
+                        else if (phase < 0.9) y = Math.sin((phase - 0.825) * 8 * Math.PI) * 0.2;
+                        else y = 0;
+                    }
+                    else if (type === 'spo2') {
+                        // الگوی SPO2 پیوسته
+                        y = Math.sin(normalizedX * 2 * Math.PI) * 0.4 +
+                            Math.sin(normalizedX * 4 * Math.PI) * 0.15 +
+                            Math.sin(normalizedX * 6 * Math.PI) * 0.1;
+                    }
+                    else if (type === 'capno') {
+                        // الگوی کاپنوگرافی پیوسته
+                        const phase = normalizedX % 1;
+                        
+                        if (phase < 0.15) y = 0;
+                        else if (phase < 0.2) y = ((phase - 0.15) / 0.05) * 1;
+                        else if (phase < 0.35) y = 1;
+                        else if (phase < 0.4) y = 1 - ((phase - 0.35) / 0.05) * 1;
+                        else y = 0;
+                    }
+                    
+                    // نویز بسیار کم برای طبیعی‌تر شدن
+                    y += (Math.random() - 0.5) * 0.02;
+                    points.push(new THREE.Vector3(x, y * amplitude + yOffset, 0));
+                }
+                
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                const material = new THREE.LineBasicMaterial({ 
+                    color: color,
+                    transparent: true,
+                    opacity: 0.9,
+                    linewidth: thickness
+                });
+                
+                const line = new THREE.Line(geometry, material);
+                
+                line.userData = {
+                    speed: speed,
+                    originalY: yOffset,
+                    totalLength: totalLength,
+                    type: type,
+                    // افزودن متغیر برای پیگیری موقعیت نسبی
+                    relativePosition: 0
+                };
+                
+                scene.add(line);
+                medicalLines.push(line);
+                
+                return line;
+            }
+
+            // ایجاد موج‌های پزشکی کاملاً پیوسته با سرعت کاهش یافته
+            createContinuousMedicalLine('ecg', 0xfacc15, 15, 0.3, 6, 3);
+            createContinuousMedicalLine('spo2', 0x00b7eb, 0, 0.2, 4, 3);
+            createContinuousMedicalLine('capno', 0xdc2626, -15, 0.25, 5, 3);
+
+            // ایجاد ذرات دایره‌ای شکل
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = window.innerWidth < 768 ? 800 : 1500;
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            const colorArray = new Float32Array(particlesCount * 3);
+            const sizeArray = new Float32Array(particlesCount);
+            const velocityArray = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i += 3) {
+                posArray[i] = (Math.random() - 0.5) * 400;
+                posArray[i + 1] = (Math.random() - 0.5) * 400;
+                posArray[i + 2] = (Math.random() - 0.5) * 400;
+                
+                const particleType = Math.random();
+                
+                if (particleType < 0.3) {
+                    colorArray[i] = 1.0;
+                    colorArray[i + 1] = 0.9;
+                    colorArray[i + 2] = 0.2;
+                    sizeArray[i / 3] = 0.5 + Math.random() * 1.0;
+                } else if (particleType < 0.55) {
+                    colorArray[i] = 0.2;
+                    colorArray[i + 1] = 0.8;
+                    colorArray[i + 2] = 1.0;
+                    sizeArray[i / 3] = 0.4 + Math.random() * 0.8;
+                } else if (particleType < 0.75) {
+                    colorArray[i] = 0.8;
+                    colorArray[i + 1] = 0.3;
+                    colorArray[i + 2] = 1.0;
+                    sizeArray[i / 3] = 0.6 + Math.random() * 1.2;
+                } else if (particleType < 0.9) {
+                    colorArray[i] = 0.3;
+                    colorArray[i + 1] = 1.0;
+                    colorArray[i + 2] = 0.5;
+                    sizeArray[i / 3] = 0.3 + Math.random() * 0.7;
+                } else {
+                    colorArray[i] = 1.0;
+                    colorArray[i + 1] = 0.2;
+                    colorArray[i + 2] = 0.2;
+                    sizeArray[i / 3] = 0.7 + Math.random() * 1.3;
+                }
+                
+                const speed = 0.015 + Math.random() * 0.05;
+                const angle1 = Math.random() * Math.PI * 2;
+                const angle2 = Math.random() * Math.PI;
+                
+                velocityArray[i] = Math.sin(angle2) * Math.cos(angle1) * speed;
+                velocityArray[i + 1] = Math.sin(angle2) * Math.sin(angle1) * speed;
+                velocityArray[i + 2] = Math.cos(angle2) * speed;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+            particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizeArray, 1));
+            particlesGeometry.setAttribute('velocity', new THREE.BufferAttribute(velocityArray, 3));
+
+            // استفاده از ShaderMaterial برای ایجاد ذرات دایره‌ای شکل
+            const particlesMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    pointTexture: { value: null }
+                },
+                vertexShader: `
+                    attribute float size;
+                    attribute vec3 color;
+                    varying vec3 vColor;
+                    
+                    void main() {
+                        vColor = color;
+                        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                        gl_PointSize = size * (300.0 / -mvPosition.z);
+                        gl_Position = projectionMatrix * mvPosition;
+                    }
+                `,
+                fragmentShader: `
+                    varying vec3 vColor;
+                    
+                    void main() {
+                        vec2 coord = gl_PointCoord - vec2(0.5);
+                        if (length(coord) > 0.5) {
+                            discard;
+                        }
+                        gl_FragColor = vec4(vColor, 1.0);
+                    }
+                `,
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // نورها
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+
+            const pointLight1 = new THREE.PointLight(0xfacc15, 1.5, 300);
+            pointLight1.position.set(80, 50, 80);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0x00b7eb, 1.2, 300);
+            pointLight2.position.set(-80, -50, 80);
+            scene.add(pointLight2);
+
+            camera.position.z = 60;
+
+            // انیمیشن بهبود یافته برای موج‌های کاملاً پیوسته با حرکت از چپ به راست
+            let time = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                time += 0.01;
+
+                // انیمیشن موج‌های پزشکی با حرکت از چپ به راست و حلقه پیوسته
+                medicalLines.forEach((line) => {
+                    // حرکت از چپ به راست با سرعت کاهش یافته
+                    line.userData.relativePosition += line.userData.speed;
+                    
+                    // اگر خط از سمت راست خارج شد، از سمت چپ وارد شود
+                    if (line.userData.relativePosition > line.userData.totalLength) {
+                        line.userData.relativePosition = -line.userData.totalLength;
+                    }
+                    
+                    // تنظیم موقعیت X برای حرکت از چپ به راست
+                    line.position.x = line.userData.relativePosition - line.userData.totalLength/2;
+                    
+                    // حرکت موجی ملایم در محور Y برای طبیعی‌تر شدن
+                    const waveFreq = line.userData.type === 'ecg' ? 2 : 
+                                   line.userData.type === 'spo2' ? 1.5 : 1.8;
+                    line.position.y = line.userData.originalY + Math.sin(time * waveFreq) * 0.2;
+                    
+                    // انیمیشن ضربان قلب بسیار ملایم
+                    const pulse = Math.sin(time * 3) * 0.05 + 1;
+                    line.scale.set(pulse, pulse, pulse);
+                });
+
+                // انیمیشن ذرات دایره‌ای
+                const positions = particlesMesh.geometry.attributes.position.array;
+                const velocities = particlesMesh.geometry.attributes.velocity.array;
+                
+                for (let i = 0; i < positions.length; i += 3) {
+                    positions[i] += velocities[i];
+                    positions[i + 1] += velocities[i + 1];
+                    positions[i + 2] += velocities[i + 2];
+                    
+                    const distanceFromCenter = Math.sqrt(
+                        positions[i] * positions[i] + 
+                        positions[i + 1] * positions[i + 1] + 
+                        positions[i + 2] * positions[i + 2]
+                    );
+                    
+                    if (distanceFromCenter > 250) {
+                        const pullStrength = 0.025;
+                        positions[i] -= positions[i] * pullStrength;
+                        positions[i + 1] -= positions[i + 1] * pullStrength;
+                        positions[i + 2] -= positions[i + 2] * pullStrength;
+                    }
+                }
+                
+                particlesMesh.geometry.attributes.position.needsUpdate = true;
+                particlesMesh.rotation.y = time * 0.1;
+
+                // انیمیشن نورها
+                pointLight1.position.x = Math.sin(time) * 70;
+                pointLight1.position.y = Math.cos(time * 1.8) * 60;
+                pointLight1.intensity = 1.0 + Math.sin(time * 3.5) * 0.5;
+
+                pointLight2.position.x = Math.cos(time * 1.4) * 65;
+                pointLight2.position.y = Math.sin(time * 1.2) * 55;
+                pointLight2.intensity = 0.8 + Math.cos(time * 2.8) * 0.4;
+
+                renderer.render(scene, camera);
+            }
+
+            // ریسایز
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            animate();
+        }
+
+        // ایجاد ذرات انفجاری پیشرفته‌تر
+        function createExplosionParticles(x, y, count = 80) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 3 + Math.random() * 6;
+                const size = 4 + Math.random() * 10;
+                const duration = 1000 + Math.random() * 1500;
+                const rotation = Math.random() * 360;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.transform = `rotate(${rotation}deg)`;
+                
+                // رنگ‌های متنوع و درخشان برای ذرات انفجاری
+                const colors = [
+                    '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', 
+                    '#FFEAA7', '#DDA0DD', '#98D8C8', '#FFA500', '#9370DB'
+                ];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
+                
+                const tx = Math.cos(angle) * speed * 150;
+                const ty = Math.sin(angle) * speed * 150;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.animation = `particleStorm ${duration}ms ease-out forwards`;
+                
+                document.getElementById('letterScene').appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, duration);
+            }
+        }
+
+        // ایجاد موج انرژی
+        function createEnergyWave(x, y, size = 100) {
+            const wave = document.createElement('div');
+            wave.className = 'energy-wave';
+            wave.style.left = (x - size/2) + 'px';
+            wave.style.top = (y - size/2) + 'px';
+            wave.style.width = size + 'px';
+            wave.style.height = size + 'px';
+            wave.style.animation = `energyWave 1500ms ease-out forwards`;
+            
+            document.getElementById('letterScene').appendChild(wave);
+            
+            setTimeout(() => {
+                if (wave.parentNode) {
+                    wave.parentNode.removeChild(wave);
+                }
+            }, 1500);
+        }
+
+        // انیمیشن پرتوهای نور
+        function animateLightBeams() {
+            const beams = document.querySelectorAll('.light-beam');
+            beams.forEach((beam, index) => {
+                setTimeout(() => {
+                    beam.style.animation = `cosmicLightBeam ${2500 + Math.random() * 1500}ms ease-in-out infinite`;
+                    beam.style.animationDelay = `${Math.random() * 1500}ms`;
+                    beam.style.opacity = '0.8';
+                }, index * 600);
+            });
+        }
+
+        // متغیرهای کنترل صدا - بهبود یافته
+        let isMusicPlaying = false;
+        let musicInitialized = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.querySelector('.music-toggle');
+
+        // تابع کنترل صدا - بهبود یافته
+        function toggleMusic() {
+            if (!musicInitialized) {
+                // اولین بار که کلیک می‌شود، موسیقی را شروع کن
+                backgroundMusic.volume = 0.7;
+                backgroundMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicInitialized = true;
+                    musicToggle.textContent = '🔊';
+                    musicToggle.classList.remove('muted');
+                }).catch(e => {
+                    console.log("پخش موسیقی نیاز به تعامل کاربر دارد");
+                    alert("لطفاً ابتدا روی نامه کلیک کنید تا موسیقی فعال شود");
+                });
+                return;
+            }
+            
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = '🔇';
+                musicToggle.classList.add('muted');
+            } else {
+                backgroundMusic.play().catch(e => console.log("خطا در پخش موسیقی"));
+                musicToggle.textContent = '🔊';
+                musicToggle.classList.remove('muted');
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // تابع مقداردهی اولیه موسیقی
+        function initializeMusic() {
+            backgroundMusic.volume = 0.7;
+            musicInitialized = true;
+        }
+
+        // لودر
+        window.addEventListener('load', () => {
+            createAdvancedBackground();
+            animateLightBeams();
+            
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 2500);
+        });
+
+        // انیمیشن باز کردن نامه - بسیار پیشرفته‌تر
+        const letterScene = document.getElementById('letterScene');
+        const mainContent = document.getElementById('mainContent');
+        const envelope = document.querySelector('.envelope');
+
+        letterScene.addEventListener('click', (e) => {
+            // جلوگیری از کلیک‌های متعدد
+            if (letterScene.classList.contains('letter-opening')) return;
+            
+            const rect = envelope.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // مقداردهی اولیه موسیقی
+            initializeMusic();
+            
+            // ایجاد ذرات انفجاری پیشرفته
+            createExplosionParticles(centerX, centerY, 100);
+            
+            // ایجاد موج‌های انرژی
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createEnergyWave(centerX, centerY, 100 + i * 40);
+                }, i * 200);
+            }
+            
+            // انیمیشن باز شدن نامه
+            letterScene.classList.add('letter-opening');
+            
+            // افکت نور دراماتیک پس از باز شدن
+            setTimeout(() => {
+                const lightFlash = document.createElement('div');
+                lightFlash.style.position = 'fixed';
+                lightFlash.style.top = '0';
+                lightFlash.style.left = '0';
+                lightFlash.style.width = '100%';
+                lightFlash.style.height = '100%';
+                lightFlash.style.background = 'radial-gradient(circle, rgba(250,204,21,0.9) 0%, rgba(0,183,235,0.7) 50%, transparent 100%)';
+                lightFlash.style.zIndex = '999';
+                lightFlash.style.opacity = '0';
+                lightFlash.style.animation = 'fadeIn 0.5s ease-out forwards';
+                
+                document.body.appendChild(lightFlash);
+                
+                setTimeout(() => {
+                    lightFlash.style.animation = 'fadeIn 0.5s ease-in reverse forwards';
+                    setTimeout(() => {
+                        if (lightFlash.parentNode) {
+                            lightFlash.parentNode.removeChild(lightFlash);
+                        }
+                    }, 500);
+                }, 400);
+            }, 800);
+            
+            // نمایش محتوای اصلی
+            setTimeout(() => {
+                letterScene.style.display = 'none';
+                mainContent.style.display = 'block';
+                mainContent.classList.add('content-reveal');
+                
+                // پخش موسیقی پس زمینه
+                setTimeout(() => {
+                    backgroundMusic.play().then(() => {
+                        isMusicPlaying = true;
+                        musicToggle.textContent = '🔊';
+                        musicToggle.classList.remove('muted');
+                    }).catch(e => console.log("پخش موسیقی نیاز به تعامل کاربر دارد"));
+                }, 1000);
+                
+                // فعال کردن انیمیشن اسکرول برای بخش‌ها
+                document.querySelectorAll('.glass-card').forEach(card => {
+                    if (!card.classList.contains('slide-in-3d')) {
+                        card.classList.add('slide-in-3d');
+                    }
+                });
+            }, 1800);
+        });
+
+        // افکت hover پیشرفته‌تر
+        envelope.addEventListener('mouseenter', () => {
+            envelope.style.transform = 'scale(1.1) rotate(3deg)';
+            envelope.style.filter = 'drop-shadow(0 0 80px rgba(250, 204, 21, 0.9)) brightness(1.3)';
+            
+            // ایجاد ذرات کوچک هنگام hover
+            const rect = envelope.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            createExplosionParticles(centerX, centerY, 15);
+        });
+
+        envelope.addEventListener('mouseleave', () => {
+            envelope.style.transform = 'scale(1) rotate(0deg)';
+            envelope.style.filter = 'drop-shadow(0 0 40px rgba(250, 204, 21, 0.7)) brightness(1)';
+        });
+
+        // شمارش معکوس
+        const eventDate = new Date('2025-10-19T19:00:00+04:30');
+        const countdownElement = document.getElementById('countdown');
+        const boxes = countdownElement.getElementsByTagName('div');
+
+        function updateCountdown() {
+            const now = new Date();
+            const difference = eventDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                boxes[0].innerHTML = days + '<br><span>روز</span>';
+                boxes[1].innerHTML = hours + '<br><span>ساعت</span>';
+                boxes[2].innerHTML = minutes + '<br><span>دقیقه</span>';
+                boxes[3].innerHTML = seconds + '<br><span>ثانیه</span>';
+            } else {
+                boxes[0].innerHTML = '0<br><span>روز</span>';
+                boxes[1].innerHTML = '0<br><span>ساعت</span>';
+                boxes[2].innerHTML = '0<br><span>دقیقه</span>';
+                boxes[3].innerHTML = '0<br><span>ثانیه</span>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // مدیریت فرم
+        const rsvpForm = document.getElementById('rsvpForm');
+        const capacityMessage = document.getElementById('capacityMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        const maxRegistrations = 100;
+
+        // بررسی وضعیت ظرفیت
+        async function checkCapacity() {
+            try {
+                const allRegistrations = await getAllRegistrationsFromSheets();
+                const registrationCount = allRegistrations.length;
+                
+                if (registrationCount >= maxRegistrations) {
+                    capacityMessage.style.display = 'block';
+                    rsvpForm.classList.add('form-disabled');
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.6';
+                    submitBtn.style.cursor = 'not-allowed';
+                } else {
+                    capacityMessage.style.display = 'none';
+                    rsvpForm.classList.remove('form-disabled');
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.cursor = 'pointer';
+                }
+            } catch (error) {
+                console.error('خطا در بررسی ظرفیت:', error);
+            }
+        }
+
+        // اعتبارسنجی فارسی
+        function validatePersian(input) {
+            const persianRegex = /^[\u0600-\u06FF\s]+$/;
+            if (input.value && !persianRegex.test(input.value)) {
+                input.value = input.value.replace(/[^\u0600-\u06FF\s]/g, '');
+                alert('لطفاً فقط از حروف فارسی استفاده کنید.');
+            }
+        }
+
+        // اعتبارسنجی اعداد
+        function validateNumbers(input) {
+            if (!/^\d*$/.test(input.value)) {
+                input.value = input.value.replace(/\D/g, '');
+                alert('لطفاً فقط اعداد وارد کنید.');
+            }
+        }
+
+        rsvpForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const allRegistrations = await getAllRegistrationsFromSheets();
+            if (allRegistrations.length >= maxRegistrations) {
+                alert('ظرفیت مراسم تکمیل شده است.');
+                return;
+            }
+
+            const role = document.getElementById('role').value;
+            const guests = (role === 'استاد' || role === 'کارشناس') ? parseInt(document.getElementById('guests').value) || 0 : 0;
+            const major = role === 'دانشجو' ? document.getElementById('major').value : '';
+
+            // اعتبارسنجی رشته تحصیلی برای دانشجویان
+            if (role === 'دانشجو' && !major) {
+                alert('لطفاً رشته تحصیلی خود را وارد کنید.');
+                return;
+            }
+
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                role: role,
+                guests: guests,
+                major: major
+            };
+
+            // نمایش حالت در حال بارگذاری
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'در حال ثبت‌نام...';
+            submitBtn.disabled = true;
+
+            try {
+                // ذخیره ثبت‌نام
+                await saveRegistrationToSheets(formData);
+                
+                alert(`ثبت‌نام شما با موفقیت انجام شد!`);
+                
+                // ریست فرم
+                rsvpForm.reset();
+                document.getElementById('guestsField').style.display = 'none';
+                document.getElementById('majorField').style.display = 'none';
+                
+                // بررسی مجدد ظرفیت
+                await checkCapacity();
+                
+            } catch (error) {
+                console.error('خطا در ثبت‌نام:', error);
+                if (error.message.includes('داده در حالت آفلاین')) {
+                    alert('✅ ثبت‌نام در حالت آفلاین ذخیره شد. بعداً همگام می‌شود.');
+                } else {
+                    alert('خطا در ثبت‌نام. لطفاً دوباره تلاش کنید.');
+                }
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // بررسی اولیه ظرفیت
+        setTimeout(() => {
+            if (document.getElementById('mainContent').style.display === 'block') {
+                checkCapacity();
+            }
+        }, 3000);
+
+        // ==================== توابع کاربردی - بهبود یافته ====================
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (document.body.classList.contains('light-theme')) {
+                themeToggle.textContent = '🌙';
+                themeToggle.style.background = 'rgba(102, 126, 234, 0.9)';
+            } else {
+                themeToggle.textContent = '🌓';
+                themeToggle.style.background = 'rgba(250, 204, 21, 0.9)';
+            }
+            
+            // به‌روزرسانی صحنه بر اساس تم
+            updateSceneForTheme();
+        }
+
+        function shareEvent() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'جشن روز جهانی هوشبری ۱۴۰۴',
+                    text: 'شما را به جشن روز جهانی هوشبری دعوت می‌کنیم!',
+                    url: window.location.href
+                });
+            } else {
+                alert('لینک دعوت‌نامه: ' + window.location.href);
+            }
+        }
+
+        function addToCalendar() {
+            const event = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:جشن روز جهانی هوشبری ۱۴۰۴
+DTSTART:20251019T190000
+DTEND:20251019T220000
+LOCATION:سالن همایش چمران، دانشگاه علوم پزشکی گناباد
+DESCRIPTION:دعوت رسمی از متخصصین اساتید کارشناسان و دانشجویان هوشبری
+END:VEVENT
+END:VCALENDAR`;
+            
+            const blob = new Blob([event], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'World-Anesthesia-Day-2025.ics';
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function openGoogleMaps() {
+            const address = "ستاد مرکزی دانشگاه علوم پزشکی گناباد";
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+        }
+
+        // انیمیشن‌های اسکرول
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in-3d');
+                }
+            });
+        }, observerOptions);
+
+        // مشاهده تمام بخش‌ها برای انیمیشن اسکرول
+        document.querySelectorAll('.glass-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // بررسی وضعیت اتصال
+        function checkConnectionStatus() {
+            const syncBtn = document.getElementById('syncBtn');
+            
+            if (storageMode === 'github') {
+                syncBtn.innerHTML = '✅ متصل به GitHub';
+                syncBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+            } else {
+                syncBtn.innerHTML = '💾 حالت آفلاین';
+                syncBtn.style.background = 'linear-gradient(135deg, #F59E0B, #D97706)';
+            }
+        }
+
+        // بررسی وضعیت اتصال هنگام لود صفحه
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkConnectionStatus, 2000);
+        });
+    </script>
+</body>
+</html>
