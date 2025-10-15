@@ -1651,7 +1651,7 @@
         const GITHUB_ISSUES_CONFIG = {
             username: 'erfan04s',
             repo: 'anesthesia-registrations-1404',
-            token: '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', // 🔑 توکن خود را اینجا قرار دهید
+            token: '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', // 🔑 توکن خود را اینجا قرار دهید
             labels: {
                 'استاد': 'استاد',
                 'کارشناس': 'کارشناس', 
@@ -1663,68 +1663,65 @@
 
         // ایجاد یک Issue جدید برای ثبت‌نام
         async function createRegistrationIssue(formData) {
-    // بررسی وجود توکن
-    if (!GITHUB_CONFIG.token || GITHUB_CONFIG.token === 'TOKEN_NEW_HERE') {
-        throw new Error('توکن GitHub تنظیم نشده است');
-    }
-
-    const issueData = {
-        title: `ثبت‌نام: ${formData.name}`,
-        body: `
-**اطلاعات ثبت‌نام:**
-
-- **نام و نام خانوادگی:** ${formData.name}
-- **شماره تماس:** ${formData.phone}
-- **نقش:** ${formData.role}
-- **رشته تحصیلی:** ${formData.major || '---'}
-- **تعداد همراهان:** ${formData.guests}
-- **تاریخ ثبت‌نام:** ${new Date().toLocaleString('fa-IR')}
-- **شناسه یکتا:** ${Date.now()}-${Math.random().toString(36).substr(2, 9)}
-        `,
-        labels: ['registration']
-    };
-
     try {
-        console.log('در حال ارسال درخواست به GitHub...');
+        console.log('📝 شروع ایجاد Issue جدید...');
         
         const response = await fetch(
-            `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/issues`,
+            `https://api.github.com/repos/${GITHUB_ISSUES_CONFIG.username}/${GITHUB_ISSUES_CONFIG.repo}/issues`,
             {
                 method: 'POST',
                 headers: {
-                    'Authorization': `token ${GITHUB_CONFIG.token}`,
+                    'Authorization': `Bearer ${GITHUB_ISSUES_CONFIG.token}`,
                     'Content-Type': 'application/json',
                     'Accept': 'application/vnd.github.v3+json'
                 },
-                body: JSON.stringify(issueData)
+                body: JSON.stringify({
+                    title: `ثبت‌نام: ${formData.name} - ${formData.role}`,
+                    body: `
+📋 **اطلاعات ثبت‌نام**
+
+👤 **نام و نام خانوادگی:** ${formData.name}
+📞 **شماره تماس:** ${formData.phone}
+🎯 **نقش:** ${formData.role}
+📚 **رشته تحصیلی:** ${formData.major || '---'}
+👥 **تعداد همراهان:** ${formData.guests || 0}
+⏰ **تاریخ ثبت‌نام:** ${new Date().toLocaleString('fa-IR')}
+🆔 **شناسه:** ${Date.now()}
+
+---
+*ثبت‌نام شده در: ${new Date().toISOString()}*
+                    `,
+                    labels: [
+                        GITHUB_ISSUES_CONFIG.labels[formData.role] || 'ثبت‌نام',
+                        'جشن-هوشبری-1404'
+                    ]
+                })
             }
         );
 
-        console.log('پاسخ دریافت شد:', response.status);
-
-        if (response.status === 401) {
-            throw new Error('خطای احراز هویت: توکن نامعتبر است');
-        }
+        console.log('📡 وضعیت پاسخ:', response.status);
         
-        if (response.status === 403) {
-            throw new Error('خطای دسترسی: توکن فاقد مجوزهای لازم است');
-        }
-        
-        if (response.status === 404) {
-            throw new Error('ریپوزیتوری پیدا نشد');
-        }
-
         if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || `خطای HTTP: ${response.status}`);
+            const errorText = await response.text();
+            console.error('❌ خطای سرور:', errorText);
+            
+            if (response.status === 401) {
+                throw new Error('خطای دسترسی: توکن GitHub معتبر نیست');
+            } else if (response.status === 403) {
+                throw new Error('خطای دسترسی: توکن دسترسی کافی ندارد');
+            } else if (response.status === 404) {
+                throw new Error('repository یافت نشد');
+            } else {
+                throw new Error(`خطای سرور: ${response.status} - ${errorText}`);
+            }
         }
 
-        const result = await response.json();
-        console.log('Issue با موفقیت ایجاد شد:', result.number);
-        return result;
+        const issueData = await response.json();
+        console.log('✅ ثبت‌نام در GitHub Issues ایجاد شد:', issueData.number);
+        return issueData;
 
     } catch (error) {
-        console.error('خطا در ایجاد Issue:', error);
+        console.error('❌ خطا در ایجاد Issue:', error);
         throw error;
     }
 }
@@ -3105,5 +3102,6 @@ END:VCALENDAR`;
     </script>
 </body>
 </html>
+
 
 
